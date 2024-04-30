@@ -3,25 +3,38 @@ import {useState} from 'react';
 import './login.css'
 
 
-const login = () => {
+const Login = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log()
+
+    const response = fetch('http://localhost:3001/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({username, password})
+    });
+
+
+  }
+
   return (
 
       <div className="container">
-        <form onSubmit={handlesubmit}>
+        <form onSubmit={handleSubmit}>
           <h1>login</h1>
-          <div>
-            <input type="email" placeholder= "E-mail"/>
+          <div className= "input-field">
+            <input type="email" placeholder= "E-mail"
+            onchange={(e) => setUsername(e.target.value )} />
             <FaUser className="icon"/>
           </div>
-          <div>
-            <input type="password" placeholder= "Senha"/>
+          <div className= "input-field">
+            <input type="password" placeholder= "Senha"
+            onchange={(e) => setPassword(e.target.value )}/>
             <FaLock className="icon"/>
           </div>
 
@@ -44,4 +57,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login
