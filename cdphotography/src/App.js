@@ -2,6 +2,7 @@ import './App.css';
 import axios from 'axios';
 import Photos from './components/photos';
 import { useEffect, useState } from 'react';
+import Login from './components/login/login';
 
 const API_URL = 'http://localhost:3000/api/v1/photos';
 
@@ -27,6 +28,7 @@ function App() {
   return (
     <div className="App">
       <h1>hello</h1>
+      <Login />
       <Photos photos={photos} />
     </div>
   );
